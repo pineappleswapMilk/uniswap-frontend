@@ -1,4 +1,4 @@
-name: Node CI
+name: Auto Upload Uniswap Exchange production build
 
 on:
   push:
@@ -25,3 +25,4 @@ jobs:
         with:
           filename: 'build.zip'
           path: './build'
+          exclusions: ''
