@@ -1,8 +1,6 @@
 on:
   push:
     # Sequence of patterns matched against refs/tags
-    branches:
-      - 'newbuild'
     tags:
       - 'v*'
 
@@ -11,15 +9,21 @@ name: Build and Release
 jobs:
   build:
     name: Gloabl Job
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['10.x', '12.x']
+        os: [ubuntu-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create production build
-        run: |
-          npm install -g yarn
-          yarn install
-          yarn build
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install -g yarn
+      - run: yarn
+      - run: yarn build
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -28,7 +32,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: test text
           draft: false
           prerelease: false
       - name: Zip the build
