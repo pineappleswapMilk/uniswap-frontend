@@ -52,8 +52,8 @@ jobs:
           asset_path: build.zip
           asset_name: build.zip
           asset_content_type: application/zip
-      - name: Upload Release Assets
-        id: upload-release-asset
+      - name: Upload setup
+        id: upload-release-asset2
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -62,34 +62,3 @@ jobs:
           asset_path: run.md
           asset_name: run.md
           asset_content_type: application/zip
-# name: 'Prebuilt release'
-
-# on:
-#   push:
-#     tags:
-#       - 'v*'
-
-# jobs:
-#   pre-release:
-#     name: 'Release'
-#     runs-on: 'ubuntu-latest'
-
-#     steps:
-#       # ...
-#       - name: Checkout repository
-#         uses: actions/checkout@v1
-#       - name: Create production build
-#         run: |
-#           npm install
-#           npm run build
-#       - name: 'Build & test'
-#         run: |
-#           echo "done!"
-#       - uses: 'marvinpinto/action-automatic-releases@latest'
-#         with:
-#           repo_token: '${{ secrets.GITHUB_TOKEN }}'
-#           # automatic_release_tag: 'latest'
-#           prerelease: false
-#           title: 'Production Build'
-#           files: |
-#             ./build/*
