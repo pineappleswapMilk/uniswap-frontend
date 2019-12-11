@@ -24,7 +24,7 @@ jobs:
       - uses: 'ianlapham/release-and-build@v1'
         with:
           repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          automatic_release_tag: 'latest'
+          # automatic_release_tag: 'latest'
           prerelease: false
           title: 'Production Build'
           files: |
