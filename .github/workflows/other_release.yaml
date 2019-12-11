@@ -2,8 +2,8 @@ name: 'release-test'
 
 on:
   push:
-    branches:
-      - 'build-test'
+    tags:
+      - 'v*'
 
 jobs:
   pre-release:
