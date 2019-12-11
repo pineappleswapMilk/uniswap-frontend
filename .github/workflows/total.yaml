@@ -39,7 +39,7 @@ jobs:
         with:
           filename: 'build.zip'
           path: './build'
-          exclusions: ''
+          # exclusions: ''
       - uses: 'finnp/create-file-action@master'
         env:
           FILE_NAME: 'README.md'
