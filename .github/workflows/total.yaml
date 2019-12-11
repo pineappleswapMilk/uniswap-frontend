@@ -36,4 +36,35 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: build
           asset_name: build
-          # asset_content_type: application/zip
+          asset_content_type: application/zip
+# name: 'Prebuilt release'
+
+# on:
+#   push:
+#     tags:
+#       - 'v*'
+
+# jobs:
+#   pre-release:
+#     name: 'Release'
+#     runs-on: 'ubuntu-latest'
+
+#     steps:
+#       # ...
+#       - name: Checkout repository
+#         uses: actions/checkout@v1
+#       - name: Create production build
+#         run: |
+#           npm install
+#           npm run build
+#       - name: 'Build & test'
+#         run: |
+#           echo "done!"
+#       - uses: 'marvinpinto/action-automatic-releases@latest'
+#         with:
+#           repo_token: '${{ secrets.GITHUB_TOKEN }}'
+#           # automatic_release_tag: 'latest'
+#           prerelease: false
+#           title: 'Production Build'
+#           files: |
+#             ./build/*
