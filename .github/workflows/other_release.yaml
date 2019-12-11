@@ -3,7 +3,7 @@ name: 'Build and upload as release'
 on:
   push:
     tags:
-      - 'v*'
+      - 'build-test'
 
 jobs:
   pre-release:
