@@ -11,13 +11,14 @@ jobs:
     name: Gloabl Job
     strategy:
       matrix:
+        node: ['10.x']
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create production build
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node }}
       - run: npm install -g yarn
