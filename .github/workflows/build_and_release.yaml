@@ -15,14 +15,8 @@ jobs:
         run: |
           npm install
           npm run build
-      # - name: Archive production artifacts
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: build
-      #     path: build
-      - name: Archive Files
-        uses: thedoctor0/zip-release@master
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
         with:
-          filename: 'build.zip'
-          path: './build'
-          exclusions: ''
+          name: build
+          path: build
