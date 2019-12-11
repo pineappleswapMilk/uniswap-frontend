@@ -43,7 +43,7 @@ jobs:
       - uses: 'finnp/create-file-action@master'
         env:
           FILE_NAME: 'README.md'
-          FILE_DATA: "#How To Run Uniswap\n1. Download build.zip and unzip\n2. In terminal navigate to that directory\n Run these two commands \n- yarn global add serve \n- serve -s build "
+          FILE_DATA: "#How To Run Uniswap\n1. Download build.zip and unzip\n2. In terminal navigate to that directory\n3. Run these two commands \n- yarn global add serve \n- serve -s build"
       - name: Upload Build
         id: build-asset
         uses: actions/upload-release-asset@v1.0.1
