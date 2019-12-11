@@ -8,7 +8,7 @@ name: Build and Release
 
 jobs:
   build:
-    name: Gloabl Job
+    name: Global Job
     strategy:
       matrix:
         node: ['10.x']
@@ -24,6 +24,11 @@ jobs:
       - run: npm install -g yarn
       - run: yarn
       - run: yarn build
+        env:
+          REACT_APP_FORTMATIC_KEY: ${{ secrets.REACT_APP_FORTMATIC_KEY }}
+          REACT_APP_NETWORK_ID: ${{ secrets.REACT_APP_NETWORK_ID }}
+          REACT_APP_NETWORK_URL: ${{ secrets.REACT_APP_NETWORK_URL }}
+          REACT_APP_PORTIS_ID: ${{ secrets.REACT_APP_PORTIS_ID }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
