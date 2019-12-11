@@ -1,22 +1,22 @@
-name: Auto Upload Uniswap Exchange production build
+# name: Auto Upload Uniswap Exchange production build
 
-on:
-  push:
-    branches:
-      - build-test
+# on:
+#   push:
+#     branches:
+#       - build-test
 
-jobs:
-  build_and_upload:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-      - name: Create production build
-        run: |
-          npm install
-          npm run build
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: build
-          path: build
+# jobs:
+#   build_and_upload:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v1
+#       - name: Create production build
+#         run: |
+#           npm install
+#           npm run build
+#       - name: Archive production artifacts
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: build
+#           path: build
