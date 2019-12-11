@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 
-name: Upload Release Asset
+name: Total package of release assets
 
 jobs:
   build:
