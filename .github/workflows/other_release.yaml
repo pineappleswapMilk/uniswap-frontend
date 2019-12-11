@@ -1,4 +1,4 @@
-name: 'release-test'
+name: 'Build and upload as release'
 
 on:
   push:
