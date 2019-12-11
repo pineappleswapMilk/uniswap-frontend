@@ -13,10 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@master
-      - name: Build project # This would actually build your project, using zip for an example artifact
-        run: |
-          npm install
-          npm run build
+      # - name: Build project # This would actually build your project, using zip for an example artifact
+      #   run: |
+      #     npm install
+      #     npm run build
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -25,40 +25,36 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body: |
-            Contains current production build of uniswap.exchange front-end. 
-            - Download and unzip build file to get files
-            - Use files to run uniswap.exchange on your own machine
-            - See run.md for easy startup guide
+          body: 'Current production build of uniswap.exchange front-end.'
           draft: false
           prerelease: false
-      - name: Zip the build
-        uses: thedoctor0/zip-release@master
-        with:
-          filename: 'build.zip'
-          path: './build'
-          exclusions: '*.git* /*node_modules/* .editorconfig'
-      - uses: 'finnp/create-file-action@master'
-        env:
-          FILE_NAME: 'run.md'
-          FILE_DATA: "#Run Uniswap\n1. Download build.zip and unzip\n2. In terminal navigate to that directory\n Run these two commands \n- yarn global add serve \n- serve -s build "
-      - name: Upload Release Assets
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: build.zip
-          asset_name: build.zip
-          asset_content_type: application/zip
-      - name: Upload setup
-        id: upload-release-asset2
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: run.md
-          asset_name: run.md
-          asset_content_type: application/zip
+      # - name: Zip the build
+      #   uses: thedoctor0/zip-release@master
+      #   with:
+      #     filename: 'build.zip'
+      #     path: './build'
+      #     exclusions: '*.git* /*node_modules/* .editorconfig'
+      # - uses: 'finnp/create-file-action@master'
+      #   env:
+      #     FILE_NAME: 'run.md'
+      #     FILE_DATA: "#Run Uniswap\n1. Download build.zip and unzip\n2. In terminal navigate to that directory\n Run these two commands \n- yarn global add serve \n- serve -s build "
+      # - name: Upload Release Assets
+      #   id: upload-release-asset
+      #   uses: actions/upload-release-asset@v1.0.1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+      #     asset_path: build.zip
+      #     asset_name: build.zip
+      #     asset_content_type: application/zip
+      # - name: Upload setup
+      #   id: upload-release-asset2
+      #   uses: actions/upload-release-asset@v1.0.1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+      #     asset_path: run.md
+      #     asset_name: run.md
+      #     asset_content_type: application/zip
