@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         node: ['10.x', '12.x']
-        os: [ubuntu-latest, macOS-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
@@ -39,7 +39,7 @@ jobs:
         with:
           filename: 'build.zip'
           path: './build'
-          # exclusions: ''
+          exclusions: 'x'
       - uses: 'finnp/create-file-action@master'
         env:
           FILE_NAME: 'README.md'
