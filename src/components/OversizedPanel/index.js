@@ -27,7 +27,6 @@ const PanelBottom = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.concreteGray};
 `
-
 export default function OversizedPanel({ hideTop, hideBottom, children }) {
   return (
     <Panel>
