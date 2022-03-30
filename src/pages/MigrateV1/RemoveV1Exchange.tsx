@@ -160,7 +160,7 @@ export default function RemoveV1Exchange({
           <BackArrow to="/migrate/v1" />
           <TYPE.mediumHeader>Remove V1 Liquidity</TYPE.mediumHeader>
           <div>
-            <QuestionHelper text="Remove your Uniswap V1 liquidity tokens." />
+            <QuestionHelper text="Remove your PineappleSwap V1 liquidity tokens." />
           </div>
         </AutoRow>
 
